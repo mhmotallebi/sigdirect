@@ -1,0 +1,5 @@
+__pycache__/
+ouput_bfs*
+*.zip
+.idea/
+backup_stuff/
