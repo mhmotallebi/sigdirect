@@ -357,7 +357,7 @@ class SigDirect:
                     continue
 
                 if last_layer._data_ss[index, label_index] == 0.0:
-                    continue
+                    last_layer._data_ss[index, label_index] = 2**-1000
 
                 r = Rule(items, label_index, 
                         last_layer._data_subsequent[index, label_index]/last_layer._data_antecedent[index], 
@@ -481,6 +481,9 @@ class SigDirect:
             logging.info('STATS: {:8.2f}'.format(tt2-tt1))
 
             new_rules = self._extract_rules(new_depth)
+
+            if len(new_rules)==0:
+                break
 
             generated_rules.extend(new_rules)
 
